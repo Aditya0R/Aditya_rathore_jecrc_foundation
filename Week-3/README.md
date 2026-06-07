@@ -43,8 +43,3 @@ The underdeveloped cluster was identified as the highest priority group for NGO 
 - Matplotlib
 - Seaborn
 - Scikit-Learn
-
-## Author
-
-Aditya Rathore
-Celebal Technologies Internship - Week 3
