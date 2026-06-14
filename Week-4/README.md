@@ -99,7 +99,3 @@ The project was implemented using TensorFlow and Keras in Google Colab.
 
 * CIFAR10_ANN_CNN_Learning_Project.ipynb
 * README.md
-
-
-
-B.Tech Computer Science Engineering
