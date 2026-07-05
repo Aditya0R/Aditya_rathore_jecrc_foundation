@@ -1,106 +1,316 @@
-# Week 7 - RAG Document Question Answering System
+### Week 7 - RAG Document Question Answering System
 
 ## Project Title
+Document Question Answering System using Retrieval-Augmented Generatio
 
-**Document Question Answering System using Retrieval-Augmented Generation**
-
----
-
-## Project Overview
-
-This project is based on the concept of **Retrieval-Augmented Generation**, commonly known as **RAG**. The main objective of this project is to build a document-based question answering system where a user can upload a PDF file and ask questions related to the content of that document.
-
-In traditional language models, the model generates answers based only on the knowledge it has learned during training. However, such models may not know the content of a newly uploaded document. To solve this problem, RAG is used.
-
-In this project, the uploaded PDF document acts as an external knowledge source. The system extracts the content of the PDF, divides it into smaller chunks, converts those chunks into numerical embeddings, stores them in a vector database, and retrieves the most relevant chunks when a user asks a question.
-
-The final answer is generated from the retrieved document context. This helps the system provide answers that are more relevant to the uploaded document.
+A beginner-friendly **Retrieval-Augmented Generation (RAG)** application that allows users to upload PDF documents and ask questions based on their content. The system retrieves the most relevant information from the uploaded document and generates answers using semantic search.
 
 ---
 
-## Objective of the Project
+# 📌 Project Overview
 
-The objective of this project is to understand and implement the basic workflow of a RAG-based application.
+Large Language Models (LLMs) have vast knowledge but cannot automatically access the contents of newly uploaded or private documents. This project solves that problem using **Retrieval-Augmented Generation (RAG)**.
 
-The project focuses on:
+Instead of relying only on the language model's knowledge, the application first retrieves the most relevant sections from the uploaded PDF and then generates an answer based on that retrieved context.
 
-- Loading PDF documents
-- Extracting text from PDF files
-- Splitting large text into smaller chunks
-- Creating embeddings from text chunks
-- Storing embeddings in a vector database
-- Retrieving relevant chunks based on user queries
-- Displaying answers from the retrieved context
-- Building a simple user interface using Streamlit
+This approach improves accuracy, reduces hallucinations, and enables question answering over custom documents.
 
 ---
 
-## Why This Project is Useful
+# 🎯 Objectives
 
-Large Language Models are powerful, but they have some limitations:
-
-1. They may not know private or newly uploaded data.
-2. They may generate incorrect information if context is not provided.
-3. They cannot automatically access the content of a PDF unless it is processed.
-4. They may hallucinate if asked about unknown information.
-
-RAG helps solve these problems by giving the model access to external documents during the answering process.
-
-In this project, the PDF uploaded by the user becomes the knowledge base. The system retrieves relevant information from that PDF and uses it to answer user questions.
+- Understand the concept of Retrieval-Augmented Generation (RAG)
+- Build an end-to-end document question-answering system
+- Learn document loading and preprocessing
+- Generate semantic embeddings
+- Store embeddings in a vector database
+- Retrieve relevant document chunks
+- Build an interactive Streamlit application
 
 ---
 
-## Features
+# ✨ Features
 
-This project includes the following features:
-
-- User-friendly Streamlit interface
-- PDF file upload option
-- Automatic PDF text extraction
-- Text splitting into smaller chunks
-- Local embedding generation using HuggingFace Sentence Transformers
-- Vector storage using ChromaDB
-- Similarity-based retrieval of relevant chunks
-- Question answering from retrieved context
-- Display of retrieved chunks for better transparency
-- No dependency on paid API for embeddings
-- Stable local RAG pipeline for demonstration
+- 📄 Upload PDF documents
+- 📖 Automatic text extraction
+- ✂️ Intelligent text chunking
+- 🔍 Semantic similarity search
+- 🧠 Embedding generation using Sentence Transformers
+- 🗂️ Vector storage using ChromaDB
+- ❓ Ask questions from uploaded documents
+- 📑 Display retrieved context chunks
+- 💻 Simple and interactive Streamlit interface
+- 🚀 Fully local embedding generation (No paid embedding API required)
 
 ---
 
-## Technologies Used
+# 🛠️ Technologies Used
 
-The following technologies and libraries are used in this project:
+| Technology | Purpose |
+|------------|----------|
+| Python | Programming Language |
+| Streamlit | User Interface |
+| LangChain | RAG Pipeline |
+| PyPDFLoader | PDF Loading |
+| RecursiveCharacterTextSplitter | Text Chunking |
+| HuggingFace Sentence Transformers | Embedding Generation |
+| ChromaDB | Vector Database |
+| pypdf | PDF Processing |
 
-### Python
+---
 
-Python is used as the main programming language because it provides strong support for machine learning, NLP, and web application development.
+# 📂 Project Structure
 
-### Streamlit
+```
+RAG_Document_Question_Answering
+│
+├── app.py
+├── README.md
+├── requirements.txt
+├── .env
+│
+├── data
+│
+├── vector_db
+│
+└── screenshots
+```
 
-Streamlit is used to create the web interface of the application. It allows users to upload PDF files and ask questions directly from the browser.
+---
 
-### LangChain
+# ⚙️ System Architecture
 
-LangChain is used to build the RAG pipeline. It provides components for document loading, text splitting, embeddings, vector stores, and retrieval.
+```
+                User
+                  │
+                  ▼
+          Upload PDF Document
+                  │
+                  ▼
+         PDF Text Extraction
+                  │
+                  ▼
+           Text Chunking
+                  │
+                  ▼
+      Embedding Generation
+                  │
+                  ▼
+     Store Embeddings in ChromaDB
+                  │
+                  ▼
+          User Question
+                  │
+                  ▼
+      Convert Question to Vector
+                  │
+                  ▼
+      Retrieve Similar Chunks
+                  │
+                  ▼
+       Generate Final Answer
+                  │
+                  ▼
+        Display Result
+```
 
-### PyPDFLoader
+---
 
-PyPDFLoader is used to load and extract text from PDF documents.
+# 🔄 Workflow
 
-### RecursiveCharacterTextSplitter
+### Step 1
 
-RecursiveCharacterTextSplitter is used to split large PDF content into smaller and meaningful chunks.
+User uploads a PDF document.
 
-### HuggingFace Embeddings
+↓
 
-HuggingFace embeddings are used to convert text chunks into numerical vector representations.
+### Step 2
 
-### Sentence Transformers
+The application extracts text from every page.
 
-The Sentence Transformer model is used to generate semantic embeddings from text.
+↓
 
-The model used in this project is:
+### Step 3
 
-```text
-sentence-transformers/all-MiniLM-L6-v2
+The extracted text is divided into smaller chunks.
+
+↓
+
+### Step 4
+
+Each chunk is converted into semantic embeddings.
+
+↓
+
+### Step 5
+
+Embeddings are stored inside ChromaDB.
+
+↓
+
+### Step 6
+
+The user's question is converted into an embedding.
+
+↓
+
+### Step 7
+
+Similarity search retrieves the most relevant chunks.
+
+↓
+
+### Step 8
+
+The retrieved context is shown as the answer.
+
+---
+
+# 📊 RAG Pipeline
+
+```
+PDF
+   │
+   ▼
+Text Extraction
+   │
+   ▼
+Chunking
+   │
+   ▼
+Embeddings
+   │
+   ▼
+Vector Database
+   │
+   ▼
+Question
+   │
+   ▼
+Similarity Search
+   │
+   ▼
+Retrieved Context
+   │
+   ▼
+Final Answer
+```
+
+---
+
+# 📥 Installation
+
+Clone the repository
+
+```bash
+git clone https://github.com/yourusername/RAG_Document_Question_Answering.git
+```
+
+Move inside the project
+
+```bash
+cd RAG_Document_Question_Answering
+```
+
+Create virtual environment
+
+```bash
+python -m venv venv
+```
+
+Activate
+
+Windows
+
+```bash
+venv\Scripts\activate
+```
+
+Linux/Mac
+
+```bash
+source venv/bin/activate
+```
+
+Install dependencies
+
+```bash
+pip install -r requirements.txt
+```
+
+Run the application
+
+```bash
+streamlit run app.py
+```
+
+---
+
+# 📚 Dataset
+
+This project works with any PDF document, including:
+
+- Notes
+- Books
+- Research Papers
+- Resume
+- Articles
+- Documentation
+- Reports
+
+---
+
+# 📸 Screenshots
+
+Add screenshots of:
+
+- Home Page
+- PDF Upload
+- Generated Answer
+- Retrieved Context
+
+---
+
+# 💡 Advantages
+
+- Better factual accuracy
+- Works on custom/private documents
+- Reduces hallucinations
+- Fast semantic search
+- Easy to extend
+- Beginner-friendly implementation
+
+---
+
+# 🚀 Future Improvements
+
+- Multi-PDF support
+- Chat history
+- Voice-based question answering
+- OCR support for scanned PDFs
+- Hybrid search
+- FAISS/Pinecone integration
+- Multi-language support
+- Better retrieval ranking
+
+---
+
+# 📖 Learning Outcomes
+
+After completing this project, you will understand:
+
+- Retrieval-Augmented Generation (RAG)
+- Vector Embeddings
+- Semantic Search
+- Document Chunking
+- Vector Databases
+- Streamlit Application Development
+- End-to-End AI Pipeline
+
+# 👨‍💻 Author
+
+**Aditya Rathore**
+
+---
+
+# ⭐ If you found this project useful, consider giving it a star.
