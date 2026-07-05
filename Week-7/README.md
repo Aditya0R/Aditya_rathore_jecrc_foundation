@@ -310,7 +310,3 @@ After completing this project, you will understand:
 # 👨‍💻 Author
 
 **Aditya Rathore**
-
----
-
-# ⭐ If you found this project useful, consider giving it a star.
