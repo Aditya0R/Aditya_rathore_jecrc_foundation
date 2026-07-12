@@ -1,6 +1,6 @@
-# 🤖 Week 8 - Single Agentic AI Pipeline
+### Week 8 - Single Agentic AI Pipeline
 
-## 📌 Project Overview
+## Project Overview
 
 This project implements a **Single-Agent Smart Assistant** that understands user queries, identifies the user's intent, routes the request to the appropriate tool, and returns the response in a structured JSON format.
 
@@ -174,7 +174,7 @@ Through this project, I learned:
 
 ## 👩‍💻 Author
 
-**Ankita Yadav**
+**Aditya Rathore**
 
-B.Tech Computer Science Engineering  
+B.Tech Computer Science Engineering With Specialisation in Artificial Intelligence
 Jaipur Engineering College and Research Centre (JECRC)
