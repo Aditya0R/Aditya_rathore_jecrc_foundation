@@ -1,4 +1,4 @@
-### Week 8 - Single Agentic AI Pipeline
+## Week 8 - Single Agentic AI Pipeline
 
 ## Project Overview
 
